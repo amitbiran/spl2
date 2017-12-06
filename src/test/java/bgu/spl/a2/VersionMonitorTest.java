@@ -45,37 +45,46 @@ public class VersionMonitorTest extends TestCase {
         Thread t1 = new Thread(() -> {
             try {
                 testVersionMonitor.await(testVersion);
-                System.out.println("test 4 versionMonitor testAwait completed");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });//create a thread that will now wait till i increase the version
 
-        //create a thread that will increase todo
+
 
          try {
-
-
+             //test 1 check that is not waiting when not suppose to wait
              t1.start();//now t1 will go into wait
-
-             synchronized (this) {
-                   this.wait(1000);//wait so it wait for a while
-             }
-             testVersionMonitor.inc();
-             assertEquals(testVersionMonitor.getVersion(),1);
+             assertEquals(true,t1.getState() != Thread.State.WAITING);
              System.out.println("test 1 versionMonitor testAwait completed");
+
+             //test 2 check that t1 is now waiting
+              t1 = new Thread(() -> {
+                 try {
+                     testVersionMonitor.await(testVersion);
+                 } catch (InterruptedException e) {
+                     e.printStackTrace();
+                 }
+             });
+              testVersionMonitor.inc();
+             testVersionMonitor.inc();
+             testVersionMonitor.inc();//inc to 3
+             t1.start();//start t1
              synchronized (this) {
                  this.wait(1000);//wait so it wait for a while
              }
-             testVersionMonitor.inc();
-             assertEquals(testVersionMonitor.getVersion(),2);
+             assertEquals(true,t1.getState() == Thread.State.WAITING);//make sure it is waiting
              System.out.println("test 2 versionMonitor testAwait completed");
+
+             //test 3 inc and expect it to change
+             testVersionMonitor.inc();
              synchronized (this) {
                  this.wait(1000);//wait so it wait for a while
              }
-             testVersionMonitor.inc();
-             assertEquals(testVersionMonitor.getVersion(),3);
+             assertEquals(true,t1.getState() != Thread.State.WAITING);//make sure it is waiting
              System.out.println("test 3 versionMonitor testAwait completed");
+
+
              t1.join();
         }
 

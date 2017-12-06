@@ -30,11 +30,11 @@ public class VersionMonitor {
         }
     }
 
-    public void await(int version) throws InterruptedException {//amit: not sure this will work after the thread wakes up how will it know to go to await again?
-        synchronized (this) {
-            while (version > this.version) {
+    public synchronized void  await(int version) throws InterruptedException {//amit: not sure this will work after the thread wakes up how will it know to go to await again?
+
+            while (version==this.version) {
                 this.wait();
-            }
+
         }
     }
 }

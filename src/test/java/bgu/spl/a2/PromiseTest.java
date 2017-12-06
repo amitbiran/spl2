@@ -88,8 +88,19 @@ public class PromiseTest extends TestCase {
             } catch (IllegalStateException e) {
                 int value = testPromise.get();
                 assertEquals(value, 5);
-                System.out.println("promise testResolved completed");
+                System.out.println("promise testResolved 1 completed");
             }
+            testPromise = new Promise<Integer>();
+            testPromise.subscribe(()->{
+                System.out.println("promise testResolved 2 completed");
+            });
+            testPromise.subscribe(()->{
+                System.out.println("promise testResolved 3 completed");
+            });
+            testPromise.resolve(1);
+            testPromise.subscribe(()->{
+                System.out.println("promise testResolved 4 completed");
+            });
 
         } catch (UnsupportedOperationException e) {
             System.out.println("Promise.resolve " + e.getMessage());
@@ -105,9 +116,12 @@ public class PromiseTest extends TestCase {
             testPromise.subscribe(()->{
                 System.out.println("testSubscribe test 1 passed");
             });
-            testPromise.resolve(5);
             testPromise.subscribe(()->{
                 System.out.println("testSubscribe test 2 passed");
+            });
+            testPromise.resolve(5);
+            testPromise.subscribe(()->{
+                System.out.println("testSubscribe test 3 passed");
             });
 
         } catch (Exception e) {
