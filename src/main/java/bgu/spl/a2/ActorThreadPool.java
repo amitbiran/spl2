@@ -32,14 +32,40 @@ public class ActorThreadPool {
 	 */
 	private BlockingQueue<Thread> nthreads;
 	private ConcurrentHashMap<String,Queue> actors = new ConcurrentHashMap<String,Queue>();
-	private ConcurrentHashMap<String,Queue> privateStates = new ConcurrentHashMap<String,Queue>();
+	private ConcurrentHashMap<String,PrivateState> privateStates = new ConcurrentHashMap<String,PrivateState>();
 
 
 	public ActorThreadPool(int nthreads) {
 		//create n different threads
        this.nthreads = new LinkedBlockingDeque<Thread>();
        for(int i=0;i<nthreads;i++){
-       	this.nthreads.add(new Thread());
+       	this.nthreads.add(new Thread(()->{
+       		///////////////
+					Action<?> action;
+					while (true) {
+						for(String key:actors.keySet()){//itirate thruough the keys
+							Queue actor =actors.get(key);//get the key
+							synchronized (actor) {//go inside a certien actor
+							while (actor.isEmpty()) {//if there is nothing in that queue watit for it
+								try {
+									actor.wait();
+								} catch (InterruptedException e) {
+									// ignore
+								}
+							}
+							action = ((LinkedBlockingDeque<Action<?>>)actor).remove();
+						}//syncronized
+						try {
+							action.handle(this,key,privateStates.get(key));//handle shouldnt be syncronized
+						} catch (Exception e) {
+							// ignore
+						}
+					}//for
+					}
+       		///////////////////
+
+			//***********************
+		}));
 	   }
 	}
 
@@ -57,11 +83,12 @@ public class ActorThreadPool {
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
 		if(actors.containsKey(actorId)){//contains the actor
 			actors.get(actorId).add(action);
-			privateStates.get(actorId).add(actorState);
+			privateStates.remove(actorId);
+			privateStates.put(actorId,actorState);
 		}
 		else{//does not contain the actor
-            actors.put(actorId,new LinkedBlockingDeque<Action>());
-			privateStates.put(actorId,new LinkedBlockingDeque<PrivateState>());
+            actors.put(actorId,new LinkedBlockingDeque<Action<?>>());
+			privateStates.put(actorId,actorState);
 		}
 	}
 
@@ -76,16 +103,19 @@ public class ActorThreadPool {
 	 *             if the thread that shut down the threads is interrupted
 	 */
 	public void shutdown() throws InterruptedException {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		for(Thread t:nthreads){
+			t.interrupt();
+			t.join();
+		}
 	}
 
 	/**
 	 * start the threads belongs to this thread pool
 	 */
 	public void start() {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		for(Thread t:nthreads){
+			t.start();
+		}
 	}
 
 }
