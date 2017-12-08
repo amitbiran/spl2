@@ -21,9 +21,8 @@ public abstract class PrivateState {
 	 *  
 	 * @param actionName
 	 */
-	public void addRecord(String actionName){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+	public void addRecord(String actionName){//pretty sure only one thread has access to privatestate at a time
+		history.add(actionName);
 	}
 	
 	

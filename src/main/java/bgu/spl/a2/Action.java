@@ -43,8 +43,10 @@ protected callback cont=null;
        this.actorId = actorId;
        this.actorState =actorState;
        this.pool = pool;
+       //syncronize? todo
        if(cont!=null){
            cont.call();//make sure that cont is now incharge of resolving this action
+           cont = null;//so it cant run again
        }
        else start();
    }
@@ -73,17 +75,14 @@ protected callback cont=null;
      * @param result - the action calculated result
      */
     protected final void complete(R result) {
-       	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
-
+        getResult().resolve(result);
     }
 
     /**
      * @return action's promise (result)
      */
     public final Promise<R> getResult() {
-    	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+    	return getResult();
     }
     
     /**
@@ -99,24 +98,22 @@ protected callback cont=null;
      * @return promise that will hold the result of the sent action
      */
 	public Promise<?> sendMessage(Action<?> action, String actorId, PrivateState actorState){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        pool.submit(action,actorId,actorState);
+        return action.getResult();//return the promise
 	}
 	
 	/**
 	 * set action's name
 	 * @param actionName
 	 */
-	public void setActionName(String actionName){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+	public synchronized void setActionName(String actionName){//syncronized because if two threds try to change at the same time
+        this.actionName = actionName;
 	}
 	
 	/**
 	 * @return action's name
 	 */
 	public String getActionName(){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        return actionName;
 	}
 }
