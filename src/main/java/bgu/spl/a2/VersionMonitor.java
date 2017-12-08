@@ -18,23 +18,18 @@ package bgu.spl.a2;
  */
 public class VersionMonitor {
     private int version;
-
-    public int getVersion() {
+    public int getVersion() {//no need to block because if two threads are using it they are not changing the value
         return version;
     }
 
-    public void inc() {
-        synchronized (this){
+    public synchronized void inc() {//syncronize so we get control over who change this value and when
             version++;
             notifyAll();
-        }
     }
 
     public synchronized void  await(int version) throws InterruptedException {//amit: not sure this will work after the thread wakes up how will it know to go to await again?
-
             while (version==this.version) {
-                this.wait();
-
+                    this.wait();
         }
     }
 }

@@ -32,7 +32,7 @@ public class Promise<T>{
 	 *             in the case where this method is called and this object is
 	 *             not yet resolved
 	 */
-	public T get() {
+	public T get() {//is two threads gonna aproach the same promise? todo
 		if (resolved)
 			return value;
 		else
@@ -47,7 +47,7 @@ public class Promise<T>{
 	 */
 	public boolean isResolved() {
 		return resolved;
-	}
+	}//no cuncurrency problem here
 
 
 	/**
@@ -63,13 +63,13 @@ public class Promise<T>{
 	 * @param value
 	 *            - the value to resolve this promise object with
 	 */
-	public void resolve(T value){
+	public void resolve(T value){//make it work with more then one thread resolving at the same time todo
 		if (!resolved) {
 			resolved=true;
 			callback call;
 			this.value = value;
 			try{
-				while (callbackQ!=null&&!callbackQ.isEmpty()){
+				while (callbackQ!=null&&!callbackQ.isEmpty()){//do all the callbacks
 					call = callbackQ.take();
 					call.call();
 				}
@@ -95,7 +95,7 @@ public class Promise<T>{
 	 * @param callback
 	 *            the callback to be called when the promise object is resolved
 	 */
-	public void subscribe(callback callback) {
+	public void subscribe(callback callback) {//will be called only once since we use block queue no need for syncronization
 		if(callbackQ==null&&!isResolved()) callbackQ = new LinkedBlockingDeque<callback>();
 		if (callbackQ.isEmpty()) {
 			if (isResolved()) {

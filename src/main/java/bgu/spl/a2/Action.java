@@ -13,8 +13,13 @@ import java.util.Collection;
  *
  * @param <R> the action result type
  */
-public abstract class Action<R> {
 
+public abstract class Action<R> {
+protected String actorId;
+protected String actionName;
+protected PrivateState actorState;
+protected ActorThreadPool pool;
+protected callback cont=null;
 	/**
      * start handling the action - note that this method is protected, a thread
      * cannot call it directly.
@@ -34,7 +39,14 @@ public abstract class Action<R> {
     * public/private/protected
     *
     */
-   /*package*/ final void handle() {
+   /*package*/ final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
+       this.actorId = actorId;
+       this.actorState =actorState;
+       this.pool = pool;
+       if(cont!=null){
+           cont.call();//make sure that cont is now incharge of resolving this action
+       }
+       else start();
    }
     
     
@@ -49,9 +61,9 @@ public abstract class Action<R> {
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
-       	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
-   
+        sendMessage((Action<?>) actions,actorId,actorState);// I give actions to my actor
+        cont = callback;//so after it gets to me again it will run the callback
+        sendMessage(this,actorId,actorState);//put myself in the queue again
     }
 
     /**
@@ -63,9 +75,9 @@ public abstract class Action<R> {
     protected final void complete(R result) {
        	//TODO: replace method body with real implementation
         throw new UnsupportedOperationException("Not Implemented Yet.");
-   
+
     }
-    
+
     /**
      * @return action's promise (result)
      */
@@ -90,5 +102,21 @@ public abstract class Action<R> {
         //TODO: replace method body with real implementation
         throw new UnsupportedOperationException("Not Implemented Yet.");
 	}
-
+	
+	/**
+	 * set action's name
+	 * @param actionName
+	 */
+	public void setActionName(String actionName){
+        //TODO: replace method body with real implementation
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+	}
+	
+	/**
+	 * @return action's name
+	 */
+	public String getActionName(){
+        //TODO: replace method body with real implementation
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+	}
 }
