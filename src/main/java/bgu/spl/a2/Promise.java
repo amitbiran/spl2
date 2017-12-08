@@ -63,8 +63,8 @@ public class Promise<T>{
 	 * @param value
 	 *            - the value to resolve this promise object with
 	 */
-	public void resolve(T value){//make it work with more then one thread resolving at the same time todo
-		if (!resolved) {
+	public synchronized void resolve(T value){//make it work with more then one thread resolving at the same time todo
+		if (!resolved) {//the problem is what if one thread check and then the other check and change it then we need to make sure we get the right value
 			resolved=true;
 			callback call;
 			this.value = value;
