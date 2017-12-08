@@ -1,4 +1,6 @@
 package bgu.spl.a2;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * represents an actor thread pool - to understand what this class does please
@@ -24,9 +26,15 @@ public class ActorThreadPool {
 	 *            the number of threads that should be started by this thread
 	 *            pool
 	 */
+	private BlockingQueue<Thread> nthreads;
+
+
 	public ActorThreadPool(int nthreads) {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		//create n different threads
+       this.nthreads = new LinkedBlockingDeque<Thread>();
+       for(int i=0;i<nthreads;i++){
+       	this.nthreads.add(new Thread());
+	   }
 	}
 
 	/**
@@ -41,8 +49,7 @@ public class ActorThreadPool {
 	 *            actor's private state (actor's information)
 	 */
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		if(actors.)
 	}
 
 	/**

@@ -15,6 +15,7 @@ import java.util.Collection;
  */
 
 public abstract class Action<R> {
+    protected Promise<R> result;
 protected String actorId;
 protected String actionName;
 protected PrivateState actorState;
@@ -63,7 +64,9 @@ protected callback cont=null;
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
-        sendMessage((Action<?>) actions,actorId,actorState);// I give actions to my actor
+        for(Action<?>item:actions) {
+            sendMessage((Action<?>) item, actorId, actorState);// I give actions to my actor
+        }
         cont = callback;//so after it gets to me again it will run the callback
         sendMessage(this,actorId,actorState);//put myself in the queue again
     }
@@ -82,7 +85,7 @@ protected callback cont=null;
      * @return action's promise (result)
      */
     public final Promise<R> getResult() {
-    	return getResult();
+        return result;
     }
     
     /**
