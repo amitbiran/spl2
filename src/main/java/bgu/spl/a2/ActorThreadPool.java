@@ -1,6 +1,10 @@
 package bgu.spl.a2;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Queue;
+
+
 
 /**
  * represents an actor thread pool - to understand what this class does please
@@ -27,6 +31,8 @@ public class ActorThreadPool {
 	 *            pool
 	 */
 	private BlockingQueue<Thread> nthreads;
+	private ConcurrentHashMap<String,Queue> actors = new ConcurrentHashMap<String,Queue>();
+	private ConcurrentHashMap<String,Queue> privateStates = new ConcurrentHashMap<String,Queue>();
 
 
 	public ActorThreadPool(int nthreads) {
@@ -49,7 +55,14 @@ public class ActorThreadPool {
 	 *            actor's private state (actor's information)
 	 */
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
-		if(actors.)
+		if(actors.containsKey(actorId)){//contains the actor
+			actors.get(actorId).add(action);
+			privateStates.get(actorId).add(actorState);
+		}
+		else{//does not contain the actor
+            actors.put(actorId,new LinkedBlockingDeque<Action>());
+			privateStates.put(actorId,new LinkedBlockingDeque<PrivateState>());
+		}
 	}
 
 	/**
