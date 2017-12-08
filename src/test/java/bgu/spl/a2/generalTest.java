@@ -6,7 +6,7 @@ import junit.framework.TestCase;
  * Created by Lenovo on 12/8/2017.
  */
 public class generalTest extends TestCase {
-    Integer a = new Integer(0);
+    int a = 0;
     public void test()  {
         Promise<Integer> amit=new Promise<Integer>();
         amit.subscribe(()->{

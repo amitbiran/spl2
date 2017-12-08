@@ -21,6 +21,7 @@ protected String actionName;
 protected PrivateState actorState;
 protected ActorThreadPool pool;
 protected callback cont=null;
+protected int count;
 	/**
      * start handling the action - note that this method is protected, a thread
      * cannot call it directly.
@@ -64,11 +65,16 @@ protected callback cont=null;
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
+        count = actions.size();
         for(Action<?>item:actions) {
-            sendMessage((Action<?>) item, actorId, actorState);// I give actions to my actor
+            item.getResult().subscribe(()->{
+                count-=1;
+                if(count==0){
+                    sendMessage(this,actorId,actorState);//put myself in the queue again
+                }
+            });//make sure that each action count down as it finish
         }
-        cont = callback;//so after it gets to me again it will run the callback
-        sendMessage(this,actorId,actorState);//put myself in the queue again
+        cont = callback;//assume the action is out of queue
     }
 
     /**
