@@ -3,7 +3,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Queue;
-
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 /**
@@ -33,6 +33,7 @@ public class ActorThreadPool {
 	private BlockingQueue<Thread> nthreads;
 	private ConcurrentHashMap<String,Queue> actors = new ConcurrentHashMap<String,Queue>();
 	private ConcurrentHashMap<String,PrivateState> privateStates = new ConcurrentHashMap<String,PrivateState>();
+	private ConcurrentHashMap<String,AtomicBoolean> locks = new ConcurrentHashMap<String,AtomicBoolean>();
 
 
 	public ActorThreadPool(int nthreads) {
@@ -41,25 +42,25 @@ public class ActorThreadPool {
        for(int i=0;i<nthreads;i++){
        	this.nthreads.add(new Thread(()->{
        		///////////////
-					Action<?> action;
+					Action<?> action=null;
 					while (true) {
 						for(String key:actors.keySet()){//itirate thruough the keys
-							Queue actor =actors.get(key);//get the key
-							synchronized (actor) {//go inside a certien actor
-							while (actor.isEmpty()) {//if there is nothing in that queue watit for it
+								Queue actor = actors.get(key);//get the actor
+								synchronized (actor) {//go inside an actor and search for an action to do
+									if(!locks.get(key).get()) { //if this actor is not locked go on if it is locked move on and stop blocking it
+										if (!actor.isEmpty()) {//if u found an action to do
+											action = ((LinkedBlockingDeque<Action<?>>) actor).remove();//take the action
+											locks.get(key).set(true);//lock this actor so no one else can take actions from it
+										}
+									}//if actor is not locked
+								}//syncronized
 								try {
-									actor.wait();
-								} catch (InterruptedException e) {
+									if (action != null)//if we have an action to do then who ho lets handle it
+										action.handle(this, key, privateStates.get(key));//handle shouldnt be syncronized
+								} catch (Exception e) {
 									// ignore
 								}
-							}
-							action = ((LinkedBlockingDeque<Action<?>>)actor).remove();
-						}//syncronized
-						try {
-							action.handle(this,key,privateStates.get(key));//handle shouldnt be syncronized
-						} catch (Exception e) {
-							// ignore
-						}
+
 					}//for
 					}
        		///////////////////
@@ -89,6 +90,7 @@ public class ActorThreadPool {
 		else{//does not contain the actor
             actors.put(actorId,new LinkedBlockingDeque<Action<?>>());
 			privateStates.put(actorId,actorState);
+			locks.put(actorId,new AtomicBoolean(false));//add an unlocked lock to this actor
 		}
 	}
 
@@ -105,6 +107,8 @@ public class ActorThreadPool {
 	public void shutdown() throws InterruptedException {
 		for(Thread t:nthreads){
 			t.interrupt();
+		}
+		for(Thread t:nthreads){
 			t.join();
 		}
 	}

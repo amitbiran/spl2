@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ae17a44-19ea-44c2-92f0-099920431e8f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bgu/spl/a2/ActorThreadPoolTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Action.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Action.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/ActorThreadPool.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/ActorThreadPool.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
     </list>
@@ -28,16 +31,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActorThreadPool.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ActorThreadPool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+            <state relative-caret-position="360">
+              <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1232#1246#0" expanded="true" />
-                <element signature="e#1335#1356#0" expanded="true" />
+                <element signature="e#1281#1295#0" expanded="true" />
+                <element signature="e#1384#1405#0" expanded="true" />
+                <element signature="e#1487#1509#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActorThreadPoolTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bgu/spl/a2/ActorThreadPoolTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,9 +59,50 @@
       <file leaf-file-name="ConcurrentHashMap.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="17140">
               <caret line="933" column="13" lean-forward="false" selection-start-line="933" selection-start-column="13" selection-end-line="933" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="e#0#262622#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#30335#30336#0" expanded="false" />
+                <element signature="e#30400#30401#0" expanded="false" />
+                <element signature="e#32334#32335#0" expanded="false" />
+                <element signature="e#32385#32386#0" expanded="false" />
+                <element signature="e#39094#39095#0" expanded="false" />
+                <element signature="e#39146#39147#0" expanded="false" />
+                <element signature="e#40959#40960#0" expanded="false" />
+                <element signature="e#41034#41035#0" expanded="false" />
+                <element signature="e#42680#42681#0" expanded="false" />
+                <element signature="e#42719#42720#0" expanded="false" />
+                <element signature="e#44347#44348#0" expanded="false" />
+                <element signature="e#44395#44396#0" expanded="false" />
+                <element signature="e#48122#48123#0" expanded="false" />
+                <element signature="e#48173#48174#0" expanded="false" />
+                <element signature="e#65240#65241#0" expanded="false" />
+                <element signature="e#65287#65288#0" expanded="false" />
+                <element signature="e#88654#88655#0" expanded="false" />
+                <element signature="e#88697#88698#0" expanded="false" />
+                <element signature="e#93306#93307#0" expanded="false" />
+                <element signature="e#93363#93364#0" expanded="false" />
+                <element signature="e#93406#93407#0" expanded="false" />
+                <element signature="e#93441#93442#0" expanded="false" />
+                <element signature="e#93710#93711#0" expanded="false" />
+                <element signature="e#93797#93798#0" expanded="false" />
+                <element signature="e#112403#112404#0" expanded="false" />
+                <element signature="e#112458#112459#0" expanded="false" />
+                <element signature="e#117483#117484#0" expanded="false" />
+                <element signature="e#117520#117521#0" expanded="false" />
+                <element signature="e#146809#146810#0" expanded="false" />
+                <element signature="e#146884#146885#0" expanded="false" />
+                <element signature="e#192348#192349#0" expanded="false" />
+                <element signature="e#192399#192400#0" expanded="false" />
+                <element signature="e#193040#193041#0" expanded="false" />
+                <element signature="e#193105#193106#0" expanded="false" />
+                <element signature="e#193170#193171#0" expanded="false" />
+                <element signature="e#193235#193236#0" expanded="false" />
+                <element signature="e#195463#195464#0" expanded="false" />
+                <element signature="e#195545#195546#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,9 +110,11 @@
       <file leaf-file-name="Queue.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/Queue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="3140">
               <caret line="190" column="6" lean-forward="false" selection-start-line="190" selection-start-column="6" selection-end-line="190" selection-end-column="6" />
-              <folding />
+              <folding>
+                <element signature="e#0#8063#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,8 +125,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -98,6 +155,7 @@
         <option value="$PROJECT_DIR$/src/test/java/bgu/spl/a2/generalTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
+        <option value="$PROJECT_DIR$/src/test/java/bgu/spl/a2/ActorThreadPoolTest.java" />
       </list>
     </option>
   </component>
@@ -129,8 +187,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -197,7 +254,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,33 +291,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.generalTest">
-    <configuration default="false" name="PromiseTest.testResolve" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="bgu.spl.a2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="a2" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="bgu.spl.a2" />
-      <option name="MAIN_CLASS_NAME" value="bgu.spl.a2.PromiseTest" />
-      <option name="METHOD_NAME" value="testResolve" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ActorThreadPoolTest.testStart">
     <configuration default="false" name="VersionMonitorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -352,6 +384,32 @@
       <option name="MAIN_CLASS_NAME" value="bgu.spl.a2.generalTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ActorThreadPoolTest.testStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="bgu.spl.a2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="a2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="bgu.spl.a2" />
+      <option name="MAIN_CLASS_NAME" value="bgu.spl.a2.ActorThreadPoolTest" />
+      <option name="METHOD_NAME" value="testStart" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -768,19 +826,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PromiseTest.testResolve" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.VersionMonitorTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PromiseTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.generalTest.test" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.generalTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.VersionMonitorTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PromiseTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.generalTest.test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.generalTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ActorThreadPoolTest.testStart" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.generalTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.generalTest.test" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PromiseTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.VersionMonitorTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PromiseTest.testResolve" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ActorThreadPoolTest.testStart" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.generalTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.generalTest.test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PromiseTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.VersionMonitorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -801,19 +859,20 @@
       <workItem from="1512554953889" duration="2398000" />
       <workItem from="1512579239765" duration="2567000" />
       <workItem from="1512677825374" duration="1455000" />
-      <workItem from="1512718515834" duration="27263000" />
+      <workItem from="1512718515834" duration="27597000" />
+      <workItem from="1512807404346" duration="2565000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PromiseTest - 2017.12.08 at 11h 58m 05s.xml">
-      <configuration name="PromiseTest" configurationId="JUnit" />
+    <history-entry file="ActorThreadPoolTest_testStart - 2017.12.09 at 10h 56m 04s.xml">
+      <configuration name="ActorThreadPoolTest.testStart" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PromiseTest - 2017.12.08 at 11h 58m 28s.xml">
-      <configuration name="PromiseTest" configurationId="JUnit" />
+    <history-entry file="ActorThreadPoolTest_testStart - 2017.12.09 at 10h 56m 25s.xml">
+      <configuration name="ActorThreadPoolTest.testStart" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PromiseTest - 2017.12.08 at 16h 01m 47s.xml">
-      <configuration name="PromiseTest" configurationId="JUnit" />
+    <history-entry file="ActorThreadPoolTest_testStart - 2017.12.09 at 10h 57m 13s.xml">
+      <configuration name="ActorThreadPoolTest.testStart" configurationId="JUnit" />
     </history-entry>
     <history-entry file="PromiseTest - 2017.12.08 at 16h 03m 53s.xml">
       <configuration name="PromiseTest" configurationId="JUnit" />
@@ -838,7 +897,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52667000" />
+    <option name="totallyTimeSpent" value="55566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -850,7 +909,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -860,10 +919,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25792813" sideWeight="0.5208333" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25792813" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25792813" sideWeight="0.47916666" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25792813" sideWeight="0.475" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -875,7 +934,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25792813" sideWeight="0.49166667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25792813" sideWeight="0.4875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -900,7 +959,7 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -909,14 +968,82 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1281#1295#0" expanded="true" />
+            <element signature="e#1384#1405#0" expanded="true" />
+            <element signature="e#1487#1509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18660">
+          <caret line="933" column="13" lean-forward="false" selection-start-line="933" selection-start-column="13" selection-end-line="933" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#262622#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#30335#30336#0" expanded="false" />
+            <element signature="e#30400#30401#0" expanded="false" />
+            <element signature="e#32334#32335#0" expanded="false" />
+            <element signature="e#32385#32386#0" expanded="false" />
+            <element signature="e#39094#39095#0" expanded="false" />
+            <element signature="e#39146#39147#0" expanded="false" />
+            <element signature="e#40959#40960#0" expanded="false" />
+            <element signature="e#41034#41035#0" expanded="false" />
+            <element signature="e#42680#42681#0" expanded="false" />
+            <element signature="e#42719#42720#0" expanded="false" />
+            <element signature="e#44347#44348#0" expanded="false" />
+            <element signature="e#44395#44396#0" expanded="false" />
+            <element signature="e#48122#48123#0" expanded="false" />
+            <element signature="e#48173#48174#0" expanded="false" />
+            <element signature="e#65240#65241#0" expanded="false" />
+            <element signature="e#65287#65288#0" expanded="false" />
+            <element signature="e#88654#88655#0" expanded="false" />
+            <element signature="e#88697#88698#0" expanded="false" />
+            <element signature="e#93306#93307#0" expanded="false" />
+            <element signature="e#93363#93364#0" expanded="false" />
+            <element signature="e#93406#93407#0" expanded="false" />
+            <element signature="e#93441#93442#0" expanded="false" />
+            <element signature="e#93710#93711#0" expanded="false" />
+            <element signature="e#93797#93798#0" expanded="false" />
+            <element signature="e#112403#112404#0" expanded="false" />
+            <element signature="e#112458#112459#0" expanded="false" />
+            <element signature="e#117483#117484#0" expanded="false" />
+            <element signature="e#117520#117521#0" expanded="false" />
+            <element signature="e#146809#146810#0" expanded="false" />
+            <element signature="e#146884#146885#0" expanded="false" />
+            <element signature="e#192348#192349#0" expanded="false" />
+            <element signature="e#192399#192400#0" expanded="false" />
+            <element signature="e#193040#193041#0" expanded="false" />
+            <element signature="e#193105#193106#0" expanded="false" />
+            <element signature="e#193170#193171#0" expanded="false" />
+            <element signature="e#193235#193236#0" expanded="false" />
+            <element signature="e#195463#195464#0" expanded="false" />
+            <element signature="e#195545#195546#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3800">
+          <caret line="190" column="6" lean-forward="false" selection-start-line="190" selection-start-column="6" selection-end-line="190" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#8063#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -924,9 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2020">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,9 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -954,7 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -970,10 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,9 +1097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2020">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -991,9 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2580">
           <caret line="130" column="5" lean-forward="false" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,10 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="34" column="43" lean-forward="false" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,9 +1128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2020">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1042,9 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2120">
           <caret line="107" column="36" lean-forward="false" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,10 +1152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1063,9 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1940">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1073,9 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="109" column="15" lean-forward="false" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1093,10 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1104,9 +1190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2020">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,9 +1197,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="109" column="15" lean-forward="true" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,10 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="36" column="50" lean-forward="false" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1145,9 +1221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
           <caret line="69" column="38" lean-forward="false" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,9 +1228,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2000">
           <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,10 +1245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="47" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="47" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1196,9 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1206,9 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1245,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,7 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,10 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,9 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="98" column="78" lean-forward="false" selection-start-line="98" selection-start-column="59" selection-end-line="98" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1300,7 +1351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,11 +1358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#254#263#0" expanded="true" />
-            <element signature="e#368#377#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1321,43 +1366,95 @@
         <state relative-caret-position="308">
           <caret line="71" column="29" lean-forward="false" selection-start-line="71" selection-start-column="29" selection-end-line="72" selection-end-column="82" />
           <folding>
-            <element signature="e#2769#2770#0" expanded="true" />
-            <element signature="e#2812#2813#0" expanded="true" />
-            <element signature="e#2912#2913#0" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#3563#3564#0" expanded="true" />
-            <element signature="e#3670#3671#0" expanded="true" />
-            <element signature="e#3740#3741#0" expanded="true" />
-            <element signature="e#3770#3771#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="false" />
+            <element signature="e#2812#2813#0" expanded="false" />
+            <element signature="e#2912#2913#0" expanded="false" />
+            <element signature="e#2941#2942#0" expanded="false" />
+            <element signature="e#3563#3564#0" expanded="false" />
+            <element signature="e#3670#3671#0" expanded="false" />
+            <element signature="e#3740#3741#0" expanded="false" />
+            <element signature="e#3770#3771#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/Queue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="3140">
           <caret line="190" column="6" lean-forward="false" selection-start-line="190" selection-start-column="6" selection-end-line="190" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="e#0#8063#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="17140">
           <caret line="933" column="13" lean-forward="false" selection-start-line="933" selection-start-column="13" selection-end-line="933" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#0#262622#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#30335#30336#0" expanded="false" />
+            <element signature="e#30400#30401#0" expanded="false" />
+            <element signature="e#32334#32335#0" expanded="false" />
+            <element signature="e#32385#32386#0" expanded="false" />
+            <element signature="e#39094#39095#0" expanded="false" />
+            <element signature="e#39146#39147#0" expanded="false" />
+            <element signature="e#40959#40960#0" expanded="false" />
+            <element signature="e#41034#41035#0" expanded="false" />
+            <element signature="e#42680#42681#0" expanded="false" />
+            <element signature="e#42719#42720#0" expanded="false" />
+            <element signature="e#44347#44348#0" expanded="false" />
+            <element signature="e#44395#44396#0" expanded="false" />
+            <element signature="e#48122#48123#0" expanded="false" />
+            <element signature="e#48173#48174#0" expanded="false" />
+            <element signature="e#65240#65241#0" expanded="false" />
+            <element signature="e#65287#65288#0" expanded="false" />
+            <element signature="e#88654#88655#0" expanded="false" />
+            <element signature="e#88697#88698#0" expanded="false" />
+            <element signature="e#93306#93307#0" expanded="false" />
+            <element signature="e#93363#93364#0" expanded="false" />
+            <element signature="e#93406#93407#0" expanded="false" />
+            <element signature="e#93441#93442#0" expanded="false" />
+            <element signature="e#93710#93711#0" expanded="false" />
+            <element signature="e#93797#93798#0" expanded="false" />
+            <element signature="e#112403#112404#0" expanded="false" />
+            <element signature="e#112458#112459#0" expanded="false" />
+            <element signature="e#117483#117484#0" expanded="false" />
+            <element signature="e#117520#117521#0" expanded="false" />
+            <element signature="e#146809#146810#0" expanded="false" />
+            <element signature="e#146884#146885#0" expanded="false" />
+            <element signature="e#192348#192349#0" expanded="false" />
+            <element signature="e#192399#192400#0" expanded="false" />
+            <element signature="e#193040#193041#0" expanded="false" />
+            <element signature="e#193105#193106#0" expanded="false" />
+            <element signature="e#193170#193171#0" expanded="false" />
+            <element signature="e#193235#193236#0" expanded="false" />
+            <element signature="e#195463#195464#0" expanded="false" />
+            <element signature="e#195545#195546#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+        <state relative-caret-position="360">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1232#1246#0" expanded="true" />
-            <element signature="e#1335#1356#0" expanded="true" />
+            <element signature="e#1281#1295#0" expanded="true" />
+            <element signature="e#1384#1405#0" expanded="true" />
+            <element signature="e#1487#1509#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bgu/spl/a2/ActorThreadPoolTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
