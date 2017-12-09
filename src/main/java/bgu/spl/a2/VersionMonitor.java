@@ -28,7 +28,7 @@ public class VersionMonitor {
     }
 
     public synchronized void  await(int version) throws InterruptedException {//amit: not sure this will work after the thread wakes up how will it know to go to await again?
-           System.out.println("awaiting");//for testing only
+        //   System.out.println("awaiting");//for testing only
             while (version==this.version) {
                     this.wait();
         }

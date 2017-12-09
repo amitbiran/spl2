@@ -96,6 +96,10 @@ public class Promise<T>{
 	 *            the callback to be called when the promise object is resolved
 	 */
 	public void subscribe(callback callback) {//will be called only once since we use block queue no need for syncronization
+        if(isResolved()){
+        	callback.call();
+        	return;
+		}
 		if(callbackQ==null&&!isResolved()) callbackQ = new LinkedBlockingDeque<callback>();
 		if (callbackQ.isEmpty()) {
 			if (isResolved()) {

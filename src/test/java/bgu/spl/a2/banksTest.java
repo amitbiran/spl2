@@ -22,7 +22,8 @@ class confirmation extends Action{
     }
     @Override
     protected void start() {
-        result.resolve(true);//just for test lets say the other bank always approve the transaction
+        System.out.println("start conf");
+        complete(true);//just for test lets say the other bank always approve the transaction
     }
 }
 
@@ -51,6 +52,7 @@ class Transmission extends Action{
         return vm;
     }
     protected void start(){
+        System.out.println("start transmission");
         List<Action<Boolean>> actions = new ArrayList<>();
         Action<Boolean> confAction = new confirmation(clientA,clientB,bankB,new PrivateState() {});
         actions.add(confAction);
@@ -67,6 +69,7 @@ class Transmission extends Action{
                 System.out.println("transmission bad");
             }
         });
+
 
     }
 
@@ -85,7 +88,7 @@ public class banksTest {
             pool.shutdown();
         }
 catch(Exception e){
-
+      System.out.println("error");
         }
 
 

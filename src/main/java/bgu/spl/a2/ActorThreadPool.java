@@ -49,7 +49,7 @@ public class ActorThreadPool {
 						boolean nothing_to_do =true;
                        // System.out.println("itarate");
 
-						for(String key:actors.keySet()){//itirate thruough the keys
+						for(String key:actors.keySet()){//itirate thruough the keys of the actors
 							if(!running.get())break;//make sure we are still running
 								Queue actor = actors.get(key);//get the actor
 								synchronized (actor) {//go inside an actor and search for an action to do
@@ -72,7 +72,7 @@ public class ActorThreadPool {
 										int g=0;//dbugger
 									}
 								} catch (Exception e) {
-									// ignore
+									System.out.println(e);//debugger
 								}
 
 					}//for
