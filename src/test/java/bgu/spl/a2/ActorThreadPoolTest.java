@@ -214,11 +214,15 @@ System.out.println("test two: expect 0-6 10-16 20-26 30-34 45-46");
         pool.submit(bb, "actor2", new PrivateState() {});
         pool.submit(cc, "actor2", new PrivateState() {});
         pool.submit(dd, "actor2", new PrivateState() {});
+        synchronized(this){
+            this.wait(1);
+            pool.shutdown();
+        }
         pool.submit(ee, "actor2", new PrivateState() {});
         pool.submit(ff, "actor2", new PrivateState() {});
         pool.submit(gg, "actor2", new PrivateState() {});
 
-        pool.shutdown();
+
     }
 
     public void testStart() throws Exception {
