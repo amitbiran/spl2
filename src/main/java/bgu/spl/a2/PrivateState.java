@@ -1,6 +1,7 @@
 package bgu.spl.a2;
 
 import java.util.List;
+import java.util.LinkedList;
 
 /**
  * an abstract class that represents private states of an actor
@@ -22,6 +23,7 @@ public abstract class PrivateState {
 	 * @param actionName
 	 */
 	public void addRecord(String actionName){//pretty sure only one thread has access to privatestate at a time
+		if(history==null){history = new LinkedList<String>();}
 		history.add(actionName);
 	}
 

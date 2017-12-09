@@ -34,7 +34,8 @@ public class ActorThreadPool {
 	private ConcurrentHashMap<String,Queue> actors = new ConcurrentHashMap<String,Queue>();
 	private ConcurrentHashMap<String,PrivateState> privateStates = new ConcurrentHashMap<String,PrivateState>();
 	private ConcurrentHashMap<String,AtomicBoolean> locks = new ConcurrentHashMap<String,AtomicBoolean>();
-
+	private VersionMonitor version =new VersionMonitor();
+	private AtomicBoolean running= new AtomicBoolean(true);
 
 	public ActorThreadPool(int nthreads) {
 		//create n different threads
@@ -42,27 +43,38 @@ public class ActorThreadPool {
        for(int i=0;i<nthreads;i++){
        	this.nthreads.add(new Thread(()->{
        		///////////////
+			System.out.println("thread: "+this.toString()+ " started");
 					Action<?> action=null;
-					while (true) {
+					while (running.get()) {
+                       // System.out.println("itarate");
+
 						for(String key:actors.keySet()){//itirate thruough the keys
+							if(!running.get())break;//make sure we are still running
 								Queue actor = actors.get(key);//get the actor
 								synchronized (actor) {//go inside an actor and search for an action to do
 									if(!locks.get(key).get()) { //if this actor is not locked go on if it is locked move on and stop blocking it
 										if (!actor.isEmpty()) {//if u found an action to do
 											action = ((LinkedBlockingDeque<Action<?>>) actor).remove();//take the action
 											locks.get(key).set(true);//lock this actor so no one else can take actions from it
+											String actionName = action.getActionName();//add this action to the history
+											PrivateState p =privateStates.get(key);
+											p.addRecord(actionName);
 										}
 									}//if actor is not locked
 								}//syncronized
 								try {
-									if (action != null)//if we have an action to do then who ho lets handle it
+									if (action != null) {//if we have an action to do then who ho lets handle it
 										action.handle(this, key, privateStates.get(key));//handle shouldnt be syncronized
+										action = null;
+										locks.get(key).set(false);//unlock this actor because we just finished with it
+										int g=0;//dbugger
+									}
 								} catch (Exception e) {
 									// ignore
 								}
 
 					}//for
-					}
+					}//infinite while
        		///////////////////
 
 			//***********************
@@ -88,7 +100,9 @@ public class ActorThreadPool {
 			privateStates.put(actorId,actorState);
 		}
 		else{//does not contain the actor
-            actors.put(actorId,new LinkedBlockingDeque<Action<?>>());
+			LinkedBlockingDeque<Action<?>> actor = 	new LinkedBlockingDeque<Action<?>>();
+			actor.add(action);
+            actors.put(actorId,actor);
 			privateStates.put(actorId,actorState);
 			locks.put(actorId,new AtomicBoolean(false));//add an unlocked lock to this actor
 		}
@@ -105,6 +119,8 @@ public class ActorThreadPool {
 	 *             if the thread that shut down the threads is interrupted
 	 */
 	public void shutdown() throws InterruptedException {
+		System.out.println("shutting down");//test only todo
+		running.set(false);
 		for(Thread t:nthreads){
 			t.interrupt();
 		}
