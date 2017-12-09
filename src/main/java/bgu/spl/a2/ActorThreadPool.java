@@ -46,6 +46,7 @@ public class ActorThreadPool {
 			System.out.println("thread: "+this.toString()+ " started");
 					Action<?> action=null;
 					while (running.get()) {
+						boolean nothing_to_do =true;
                        // System.out.println("itarate");
 
 						for(String key:actors.keySet()){//itirate thruough the keys
@@ -55,6 +56,7 @@ public class ActorThreadPool {
 									if(!locks.get(key).get()) { //if this actor is not locked go on if it is locked move on and stop blocking it
 										if (!actor.isEmpty()) {//if u found an action to do
 											action = ((LinkedBlockingDeque<Action<?>>) actor).remove();//take the action
+											nothing_to_do = false;
 											locks.get(key).set(true);//lock this actor so no one else can take actions from it
 											String actionName = action.getActionName();//add this action to the history
 											PrivateState p =privateStates.get(key);
@@ -74,6 +76,12 @@ public class ActorThreadPool {
 								}
 
 					}//for
+						//avoid busy wait
+							if (nothing_to_do)try{ version.await(version.getVersion());}
+						catch(Exception e){
+							//ignore
+						}
+
 					}//infinite while
        		///////////////////
 
@@ -106,6 +114,7 @@ public class ActorThreadPool {
 			privateStates.put(actorId,actorState);
 			locks.put(actorId,new AtomicBoolean(false));//add an unlocked lock to this actor
 		}
+		version.inc();
 	}
 
 	/**
