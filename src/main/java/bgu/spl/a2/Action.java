@@ -1,6 +1,7 @@
 package bgu.spl.a2;
 
 import java.util.Collection;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * an abstract class that represents an action that may be executed using the
@@ -21,7 +22,8 @@ protected String actionName;
 protected PrivateState actorState;
 protected ActorThreadPool pool;
 protected callback cont=null;
-protected int count;
+protected AtomicInteger count;
+Object lock =new Object();
 	/**
      * start handling the action - note that this method is protected, a thread
      * cannot call it directly.
@@ -65,16 +67,33 @@ protected int count;
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
-        count = actions.size();
+        int num = actions.size();
+        count = new AtomicInteger(num);
+        cont = callback;//assume the action is out of queue
         for(Action<?>item:actions) {
             item.getResult().subscribe(()->{
-                count-=1;
-                if(count==0){
-                    sendMessage(this,actorId,actorState);//put myself in the queue again
+             //   System.out.println("count is "+count);
+                count.decrementAndGet();
+                if(count.get()==0){
+                    sendMessage(this, actorId, actorState);//put myself in the queue again
                 }
-            });//make sure that each action count down as it finish
+            });
+            /*
+            callback c = ()->{
+                synchronized (lock) {
+                    int temp = count.get()-1;
+                    count.set(temp);
+                    if (count.get() == 0) {
+                        sendMessage(this, actorId, actorState);//put myself in the queue again
+                    }
+                }
+            };
+           // synchronized (c) {
+                item.getResult().subscribe(c);//make sure that each action count down as it finish
+            //}//lock it on the action
+            */
         }
-        cont = callback;//assume the action is out of queue
+
     }
 
     /**

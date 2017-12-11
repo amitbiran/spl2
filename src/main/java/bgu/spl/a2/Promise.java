@@ -22,7 +22,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class Promise<T>{
 	private boolean resolved;
 	private T value;
-	private BlockingQueue<callback> callbackQ;
+	private BlockingQueue<callback> callbackQ =new LinkedBlockingDeque<callback>();
 
 	/**
 	 *
@@ -64,6 +64,7 @@ public class Promise<T>{
 	 *            - the value to resolve this promise object with
 	 */
 	public synchronized void resolve(T value){
+		//System.out.println("resolve + Q size is " +callbackQ.size());
 		if (!resolved) {//the problem is what if one thread check and then the other check and change it then we need to make sure we get the right value
 			resolved=true;
 			callback call;
@@ -71,10 +72,11 @@ public class Promise<T>{
 			try{
 				while (callbackQ!=null&&!callbackQ.isEmpty()){//do all the callbacks
 					call = callbackQ.take();
+					if(call !=null)
 					call.call();
 				}
 			} catch (Exception e) {
-				System.out.println("Promise.resolve - something went wrong - " + e.getMessage());
+				System.out.println("Promise.resolve - something went wrong - " + e.getCause().toString());
 			}
 
 		}
@@ -95,7 +97,8 @@ public class Promise<T>{
 	 * @param callback
 	 *            the callback to be called when the promise object is resolved
 	 */
-	public void subscribe(callback callback) {//will be called only once since we use block queue no need for syncronization
+	public synchronized void subscribe(callback callback) {//will be called only once since we use block queue no need for syncronization
+      // System.out.println("subscribe");
         if(isResolved()){
         	callback.call();
         	return;
@@ -103,13 +106,16 @@ public class Promise<T>{
 		if(callbackQ==null&&!isResolved()) callbackQ = new LinkedBlockingDeque<callback>();
 		if (callbackQ.isEmpty()) {
 			if (isResolved()) {
-				if(callbackQ!=null)callbackQ=null;
+			//	System.out.println("make callback null (subscribe)");
+				if(callbackQ!=null){callbackQ=null;
+				//	System.out.println("make callback null (subscribe)");
+				}
 				callback.call();
 			}
 			else try {
 				callbackQ.put(callback);
 			} catch (Exception e) {
-				System.out.println("Promise.subscribe - something went wrong - " + e.getMessage());
+				System.out.println("Promise.subscribe - something went wrong - " + e);
 			}
 
 		} else {
