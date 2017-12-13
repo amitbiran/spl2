@@ -1,4 +1,5 @@
 package bgu.spl.a2;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -104,6 +105,23 @@ public class ActorThreadPool {
 			//***********************
 		}));
 	   }
+	}
+
+	/**
+	 * getter for actors
+	 * @return actors
+	 */
+	public Map<String, PrivateState> getActors(){
+		return privateStates;
+	}
+
+	/**
+	 * getter for actor's private state
+	 * @param actorId actor's id
+	 * @return actor's private state
+	 */
+	public PrivateState getPrivateState(String actorId){
+		return privateStates.get(actorId);
 	}
 
 	/**
