@@ -8,7 +8,9 @@ public class Computer {
 	String computerType;
 	long failSig;
 	long successSig;
-	
+	private  SuspendingMutex txt= new SuspendingMutex(this);
+
+
 	public Computer(String computerType) {
 		this.computerType = computerType;
 	}
@@ -22,7 +24,10 @@ public class Computer {
 	 * @return a signature if couersesGrades grades meet the conditions
 	 */
 	public long checkAndSign(List<String> courses, Map<String, Integer> coursesGrades){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		long ans = successSig;
+		for(String course:courses){
+			if(coursesGrades.get(course)==null||coursesGrades.get(course)<56)ans = failSig;
+		}
+		return ans;
 	}
 }

@@ -84,9 +84,9 @@ class Transmission extends Action{
 public class banksTest {
 
     public static void main(String[] args) throws InterruptedException {
-        for (int n = 0; n < 10001; n++) {
+        for (int n = 0; n < 100001; n++) {
             System.out.println("=================================="+n);
-            ActorThreadPool pool = new ActorThreadPool(2);
+            ActorThreadPool pool = new ActorThreadPool(8);
             Action<String> trans = new Transmission(100, "A", "B", "bank1", "bank2", new PrivateState() {
             });
             Action<String> trans1 = new Transmission(100, "B", "A", "bank2", "bank1", new PrivateState() {
@@ -126,17 +126,17 @@ public class banksTest {
             pool.submit(trans2, "bank1", new PrivateState() {
             });
             synchronized (lock) {
-                //     lock.wait(10);
+                     lock.wait(100);
             }
             pool.submit(trans3, "bank3", new PrivateState() {
             });
 
-            pool.start();
+
             pool.submit(trans4, "bank2", new PrivateState() {
             });
             pool.submit(trans5, "bank1", new PrivateState() {
             });
-
+            pool.start();
             pool.submit(trans1, "bank2", new PrivateState() {
             });
 

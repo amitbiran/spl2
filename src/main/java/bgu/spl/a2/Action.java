@@ -17,13 +17,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Action<R> {
     protected Promise<R> result;
-protected String actorId;
-protected String actionName;
-protected PrivateState actorState;
-protected ActorThreadPool pool;
-protected callback cont=null;
-protected AtomicInteger count;
-Object lock =new Object();
+    protected String actorId;
+    protected String actionName;
+    protected PrivateState actorState;
+    protected ActorThreadPool pool;
+    protected callback cont=null;
+    protected AtomicInteger count;
+    Object lock =new Object();
 	/**
      * start handling the action - note that this method is protected, a thread
      * cannot call it directly.

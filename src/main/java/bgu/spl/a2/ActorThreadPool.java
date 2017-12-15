@@ -40,71 +40,71 @@ public class ActorThreadPool {
 
 	public ActorThreadPool(int nthreads) {
 		//create n different threads
-       this.nthreads = new LinkedBlockingQueue<Thread>();
-       for(int i=0;i<nthreads;i++){
-       	this.nthreads.add(new Thread(()->{
-       		///////////////
-			System.out.println("thread: "+this.toString()+ " started");
-					Action<?> action=null;
-					while (running.get()) {
-						boolean nothing_to_do =true;
-                       // System.out.println("itarate");
+		this.nthreads = new LinkedBlockingQueue<Thread>();
+		for(int i=0;i<nthreads;i++){
+			this.nthreads.add(new Thread(()->{
+				///////////////
+				System.out.println("thread: "+this.toString()+ " started");
+				Action<?> action=null;
+				while (running.get()) {
+					boolean nothing_to_do =true;
+					// System.out.println("itarate");
 
-						for(String key:actors.keySet()){//itirate thruough the keys of the actors
-							if(!running.get())break;//make sure we are still running
-								Queue actor = actors.get(key);//get the actor
-								synchronized (actor) {//go inside an actor and search for an action to do
-									AtomicBoolean lock = locks.get(key);
-									while(lock == null){
-										lock = locks.get(key);
+					for(String key:actors.keySet()){//itirate thruough the keys of the actors
+						if(!running.get())break;//make sure we are still running
+						Queue actor = actors.get(key);//get the actor
+						synchronized (actor) {//go inside an actor and search for an action to do
+							AtomicBoolean lock = locks.get(key);
+							while(lock == null){
+								lock = locks.get(key);
+							}
+							if(!lock.get()) { //if this actor is not locked go on if it is locked move on and stop blocking it
+								if (!actor.isEmpty()) {//if u found an action to do
+
+									try {
+										action = ((LinkedBlockingQueue<Action<?>>) actor).take();//take the action
+									} catch (InterruptedException e) {
+										e.printStackTrace();
 									}
-									if(!lock.get()) { //if this actor is not locked go on if it is locked move on and stop blocking it
-										if (!actor.isEmpty()) {//if u found an action to do
+									nothing_to_do = false;
+									locks.get(key).set(true);//lock this actor so no one else can take actions from it
+									String actionName = action.getActionName();//add this action to the history
 
-											try {
-												action = ((LinkedBlockingQueue<Action<?>>) actor).take();//take the action
-											} catch (InterruptedException e) {
-												e.printStackTrace();
-											}
-											nothing_to_do = false;
-											locks.get(key).set(true);//lock this actor so no one else can take actions from it
-											String actionName = action.getActionName();//add this action to the history
-
-											PrivateState p =privateStates.get(key);
-											while(p==null){
-												p=privateStates.get(key);
-											}
-											p.addRecord(actionName);
-										}
-									}//if actor is not locked
-								}//syncronized
-								try {
-									if (action != null) {//if we have an action to do then who ho lets handle it
-										//synchronized (action) {
-											action.handle(this, key, privateStates.get(key));//handle shouldnt be syncronized
-										//}
-										action = null;
-										locks.get(key).set(false);//unlock this actor because we just finished with it
-										int g=0;//dbugger
+									PrivateState p =privateStates.get(key);
+									while(p==null){
+										p=privateStates.get(key);
 									}
-								} catch (Exception e) {
-									System.out.println(e);//debugger
+									p.addRecord(actionName);
 								}
-
-					}//for
-						//avoid busy wait
-							if (nothing_to_do)try{ version.await(version.getVersion());}
-						catch(Exception e){
-							System.out.println("cant await: "+e);
-							System.out.println("cant await: "+e);
+							}//if actor is not locked
+						}//syncronized
+						try {
+							if (action != null) {//if we have an action to do then who ho lets handle it
+								//synchronized (action) {
+								action.handle(this, key, privateStates.get(key));//handle shouldnt be syncronized
+								//}
+								action = null;
+								locks.get(key).set(false);//unlock this actor because we just finished with it
+								int g=0;//dbugger
+							}
+						} catch (Exception e) {
+							System.out.println(e);//debugger
 						}
 
-					}//infinite while
-       		///////////////////
+					}//for
+					//avoid busy wait
+					if (nothing_to_do)try{ version.await(version.getVersion());}
+					catch(Exception e){
+						System.out.println("cant await: "+e);
+						System.out.println("cant await: "+e);
+					}
 
-			//***********************
-		}));
-	   }
+				}//infinite while
+				///////////////////
+
+				//***********************
+			}));
+		}
 	}
 
 	/**
@@ -142,8 +142,8 @@ public class ActorThreadPool {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		//	privateStates.remove(actorId);
-		//	privateStates.put(actorId,actorState);
+			//	privateStates.remove(actorId);
+			//	privateStates.put(actorId,actorState);
 		}
 		else{//does not contain the actor
 			LinkedBlockingQueue<Action<?>> actor = 	new LinkedBlockingQueue<Action<?>>();
