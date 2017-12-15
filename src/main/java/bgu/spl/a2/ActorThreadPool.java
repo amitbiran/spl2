@@ -148,6 +148,7 @@ public class ActorThreadPool {
 		else{//does not contain the actor
 			LinkedBlockingQueue<Action<?>> actor = 	new LinkedBlockingQueue<Action<?>>();
 			try {
+				if(action !=null)
 				actor.put(action);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
