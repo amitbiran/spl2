@@ -15,15 +15,14 @@ public class OpenCourse extends Action {
         this.capacity = capacity;
         this.name = name;
         this.prequisites = prequisites;
-        this.setActionName("Open A New Course");
-
+        setActionName("Open A New Course");
 
     }
 
 
     @Override
     protected void start() {
-        this.actorState.addRecord(getActionName());
+        actorState.addRecord(getActionName());
         ((DepartmentPrivateState) this.actorState).addCourse(name);
         CoursePrivateState course = new CoursePrivateState();
         course.setAvailableSpots(capacity);
@@ -31,8 +30,8 @@ public class OpenCourse extends Action {
         for (String p :prequisites){
             course.add_prequisite(p);
         }
+        System.out.println("Open Course: "+ name);
         pool.submit(null, name, course);
-        complete(null);
 
     }
 }

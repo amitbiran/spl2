@@ -12,25 +12,26 @@ public class CloseCourse extends Action {
 
     public CloseCourse (String course){
         this.course = course;
-        this.setActionName("Close A Course");
-
+        setActionName("Close A Course");
     }
 
     @Override
     protected void start() {
-        this.actorState.addRecord(getActionName());
+        actorState.addRecord(getActionName());
+        LinkedList<Action> actions = new LinkedList<Action>();
         if (((DepartmentPrivateState)this.actorState).getCourseList().contains(this.course)){
             TerminateCourse terminate = new TerminateCourse();
-            LinkedList<Action> actions = new LinkedList<Action>();
-            Promise promise = sendMessage(terminate, this.course, (CoursePrivateState)pool.getPrivateState(course));//todo make sure its not a syncronization problem
+            Promise promise = sendMessage(terminate, this.course, (CoursePrivateState)pool.getPrivateState(course));
             actions.add(terminate);
-            then(actions,()->{
-                ((DepartmentPrivateState)this.actorState).getCourseList().remove(course);//remove course from the department
-                System.out.println("removed course");
-                complete(null);
-            });
         } else {
             System.out.println("no such course: "+ course);
+            return;
         }
+
+        then(actions, ()->{
+            ((DepartmentPrivateState)this.actorState).getCourseList().remove(course);
+            System.out.println("Removed course: "+ course);
+            complete(null);
+        });
     }
 }

@@ -13,7 +13,7 @@ public class Computer {
 	public Computer(String computerType) {
 		this.computerType = computerType;
 	}
-
+	
 	/**
 	 * this method checks if the courses' grades fulfill the conditions
 	 * @param courses

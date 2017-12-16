@@ -6,23 +6,29 @@ import bgu.spl.a2.sim.privateStates.CoursePrivateState;
 import java.util.LinkedList;
 
 public class TerminateCourse extends Action {
-
     public TerminateCourse(){
-        this.setActionName("Terminate Course");
+        setActionName("Terminate Course");
     }
 
     @Override
     protected void start() {
         ((CoursePrivateState)this.actorState).setAvailableSpots(-1);
-        ((CoursePrivateState)this.actorState).setRegistered(-1);
+        ((CoursePrivateState)this.actorState).setRegistered(0);
         LinkedList<Action> actions = new LinkedList<Action>();
+        if (((CoursePrivateState)this.actorState).getRegStudents().size() == 0){
+            complete(null);
+            return;
+        }
         for (String student: ((CoursePrivateState)this.actorState).getRegStudents()){
-            Unregister unregister = new Unregister(student);// unregister already send the student action to delete him
+            Unregister unregister = new Unregister(student);
             sendMessage(unregister, this.actorId, this.actorState);
             actions.add(unregister);
+            System.out.println("Removed: "+ student + " because he is stupid");
         }
-        then(actions,()->{
+        this.then(actions, ()->{
+            System.out.println("Terminate " + actorId);
             complete(null);
         });
+
     }
 }

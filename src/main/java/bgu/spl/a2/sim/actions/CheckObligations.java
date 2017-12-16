@@ -30,29 +30,29 @@ public class CheckObligations extends Action {
         Computer comp = warehouse.getPC(this.computer);
         SuspendingMutex mutex = warehouse.getMutex(this.computer);
         Promise p;
-        synchronized (mutex) {
+        //synchronized (mutex) {
             p = mutex.down();
-        }
-        boolean first = p.isResolved();
-        p.subscribe(() -> {
-            LinkedList<String> courses = new LinkedList<String>();
-            for (String c : this.courses)
-                courses.add(c);
-            for (String student : students) {
-                long sig = comp.checkAndSign(courses, ((StudentPrivateState) pool.getPrivateState(student)).getGrades());
-                UpdateSig updateSig = new UpdateSig(sig);
-                sendMessage(updateSig, student, pool.getPrivateState(student));
-            }
-
-
-            if (first)
-                //todo sync
-                synchronized (mutex) {
-                    mutex.up();
+        //}
+            boolean first = p.isResolved();
+            p.subscribe(() -> {
+                LinkedList<String> courses = new LinkedList<String>();
+                for (String c : this.courses)
+                    courses.add(c);
+                for (String student : students) {
+                    long sig = comp.checkAndSign(courses, ((StudentPrivateState) pool.getPrivateState(student)).getGrades());
+                    UpdateSig updateSig = new UpdateSig(sig);
+                    sendMessage(updateSig, student, pool.getPrivateState(student));
                 }
-            System.out.println("finish Obligation check " + actorId);
-            complete(null);
-        });
+
+
+                if (first)
+                    //todo sync
+                    //synchronized (mutex) {
+                        mutex.up();
+                    //}
+                    System.out.println("finish Obligation check, Department: " + actorId);
+                complete(null);
+            });
 
     }
 }

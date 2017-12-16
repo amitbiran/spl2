@@ -1,7 +1,5 @@
-package bgu.spl.a2.sim.actions;
+package bgu.spl.a2;
 
-
-import bgu.spl.a2.ActorThreadPool;
 import bgu.spl.a2.sim.Computer;
 import bgu.spl.a2.sim.Warehouse;
 import bgu.spl.a2.sim.actions.*;
@@ -19,6 +17,9 @@ public class ObligationsTest {
         DepartmentPrivateState cs = new DepartmentPrivateState();
         pool.submit(null, "cs", cs);
 
+        DepartmentPrivateState kalkala = new DepartmentPrivateState();
+        pool.submit(null, "kalkala", kalkala);
+
         String[] prequisites1 = new String[0];
         OpenCourse createDS = new OpenCourse(5, "data structures", prequisites1);
         CoursePrivateState dslState = new CoursePrivateState();
@@ -33,10 +34,10 @@ public class ObligationsTest {
         OpenCourse createSplAction = new OpenCourse(8, "spl", prequisites);
         CoursePrivateState splState = new CoursePrivateState();
 
-        AddStudent createStudent1 = new AddStudent("amit", 0);
+        AddStudent createStudent1 = new AddStudent("amit");
         StudentPrivateState student1State = new StudentPrivateState();
 
-        AddStudent createStudent2 = new AddStudent("groot", 0);
+        AddStudent createStudent2 = new AddStudent("groot");
         StudentPrivateState student2State = new StudentPrivateState();
 
         Unregister unregister = new Unregister("amit");
@@ -44,10 +45,10 @@ public class ObligationsTest {
 
         pool.submit(createDS, "cs", dslState);//add course
         pool.submit(createSplAction, "cs", splState);//add course
-        pool.submit(createCalculus, "cs", CalState);
-        pool.submit(createSex, "cs", SexState);
+        //pool.submit(createCalculus, "cs", CalState);
+        //pool.submit(createSex, "cs", SexState);
         pool.submit(createStudent1, "cs", student1State);// add student
-        pool.submit(createStudent2, "cs", student2State);// add student
+        pool.submit(createStudent2, "kalkala", student2State);// add student
 
         Praticipate pr0 = new Praticipate("amit", "56");
         Praticipate pr = new Praticipate("amit", "90");
@@ -61,7 +62,7 @@ public class ObligationsTest {
         pool.submit(pr0, "data structures", dslState);
         Object lock = new Object();
         pr0.getResult().subscribe(()->{
-            pool.submit(pr, "spl", splState);
+        pool.submit(pr, "spl", splState);
 
         });
         while (!pool.getActors().containsKey("spl")){}
@@ -83,12 +84,16 @@ public class ObligationsTest {
         c1.setFailSig(55);
         c1.setSuccessSig(100);
         String[] students = {"amit"};
+        String[] students2 = {"groot"};
         String[] courses = {"data structures", "spl"};
+        String[] courses2 = {"data structures"};
         CheckObligations check1 = new CheckObligations(warehouse,students ,courses, "bestPC" );
-        pool.submit(pr2, "calculus", CalState);
+        CheckObligations check2 = new CheckObligations(warehouse,students2 ,courses2, "bestPC" );
+        //pool.submit(pr2, "calculus", CalState);
         pool.submit(check1, "cs", cs);
-        pool.submit(pr3, "sexual harassment" , SexState);
-        pool.submit(unregister, "spl", splState);
+        pool.submit(check2, "kalkala", kalkala);
+        //pool.submit(pr3, "sexual harassment" , SexState);
+        //pool.submit(unregister, "spl", splState);
 
 
 

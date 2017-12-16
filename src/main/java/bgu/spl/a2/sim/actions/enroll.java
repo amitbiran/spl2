@@ -16,7 +16,7 @@ public class enroll extends Action {
         this.prequisites = prequisites;
         this.course = course;
         this.grade = grade;
-        this.setActionName("enroll");
+        setActionName("enroll");
     }
 
     @Override

@@ -1,4 +1,5 @@
 package bgu.spl.a2;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -74,7 +75,7 @@ public class ActorThreadPool {
 									while(p==null){
 										p=privateStates.get(key);
 									}
-								//	p.addRecord(actionName);
+									//p.addRecord(actionName);
 								}
 							}//if actor is not locked
 						}//syncronized
@@ -193,5 +194,15 @@ public class ActorThreadPool {
 			t.start();
 		}
 	}
+	/**
+	 * Private States getter
+	 * Written by Amitttttttt
+	 * @return Praivate States
+	 */
+	public HashMap<String, PrivateState> getPrivateStates() {
+		HashMap<String, PrivateState> res = new HashMap<String, PrivateState>();
+		res.putAll(privateStates);
 
+		return res;
+	}
 }
