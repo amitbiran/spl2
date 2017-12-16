@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class SuspendingMutex {
 	private Computer computer;
-	AtomicBoolean isFree = new AtomicBoolean(false);
+	AtomicBoolean isFree = new AtomicBoolean(true);
 	Queue<Promise> promises = new PriorityQueue<Promise>();
 	/**
 	 * Constructor
@@ -37,6 +37,7 @@ public class SuspendingMutex {
 			promises.add(p);
 			return p;
 		}
+		isFree.set(false);
 		p.resolve(computer);
 		return p;
 	}

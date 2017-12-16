@@ -21,9 +21,11 @@ public class Praticipate extends Action {
             this.grade = null;
         }
         this.student = student;
+        this.setActionName("Participating In Course");
     }
     @Override
     protected void start() {
+        this.actorState.addRecord(getActionName());
         if (((CoursePrivateState)actorState).getAvailableSpots()==0){
             System.out.println("course is full: "+ this.actorId);
             return;

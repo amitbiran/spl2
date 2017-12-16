@@ -25,4 +25,32 @@ public class Warehouse {
             index++;
         }
     }
+
+    public Computer getPC(String computerID){
+	    Computer res =null;
+	    for(Computer c : PC_arr){
+	        if(c.computerType == computerID)
+	            res = c;
+	        break;
+        }
+        if(res == null)
+            System.out.println("(getPc)no such pc exist");
+	    return res;
+
+    }
+
+    public SuspendingMutex getMutex(String computerID){
+        Computer res =null;
+        for(Computer c : PC_arr){
+            if(c.computerType == computerID)
+                res = c;
+            break;
+        }
+        if(res == null) {
+            System.out.println("(getMutex) no such mutex exist");
+            return null;
+        }
+        return res.txt;
+
+    }
 }

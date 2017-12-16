@@ -11,12 +11,16 @@ public class AddStudent extends Action {
     public AddStudent (String name, long signature){
         this.name = name;
         this.signature = signature;
+        this.setActionName("Add Student");
+
     }
     @Override
     protected void start() {
+        this.actorState.addRecord(getActionName());
         ((DepartmentPrivateState) actorState).addStudent(name);
         StudentPrivateState student = new StudentPrivateState();
         student.setSignature(signature);
         pool.submit(null, name, student);
+        complete(null);
     }
 }

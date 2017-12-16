@@ -74,7 +74,7 @@ public class ActorThreadPool {
 									while(p==null){
 										p=privateStates.get(key);
 									}
-									p.addRecord(actionName);
+								//	p.addRecord(actionName);
 								}
 							}//if actor is not locked
 						}//syncronized

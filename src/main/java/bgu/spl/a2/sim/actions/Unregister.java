@@ -12,10 +12,12 @@ public class Unregister extends Action {
 
     public Unregister (String student){
         this.student = student;
+        this.setActionName("Unregister");
     }
 
     @Override
     protected void start() {
+        this.actorState.addRecord(getActionName());
         StudentPrivateState student = (StudentPrivateState)pool.getPrivateState(this.student);
         if (student ==null){
             System.out.println("no such Student: "+ this.student);
@@ -27,6 +29,7 @@ public class Unregister extends Action {
         Promise p = sendMessage(disenroll, this.student, student);
         then(actions, ()->{
             ((CoursePrivateState)this.actorState).remove_student(this.student);
+            complete(null);
         });
     }
 

@@ -10,6 +10,7 @@ public class disenroll extends Action {
 
     public disenroll(String course){
         this.course = course;
+        this.setActionName("dissenroll");
     }
     @Override
     protected void start() {
