@@ -4,28 +4,31 @@ import bgu.spl.a2.Action;
 import bgu.spl.a2.sim.privateStates.CoursePrivateState;
 import bgu.spl.a2.sim.privateStates.DepartmentPrivateState;
 
+
+
 public class OpenCourse extends Action {
-    int capacity;
-    String name;
-    String[] preqisites;
+    private int capacity;
+    private String name;
+    private String[] prequisites;
 
-
-
-    public OpenCourse(int capacity,String name,String[] preqisites){
-        this.capacity =capacity;
+    public OpenCourse (int capacity , String name, String[] prequisites){
+        this.capacity = capacity;
         this.name = name;
-        this.preqisites = preqisites;
+        this.prequisites = prequisites;
+
     }
+
 
     @Override
     protected void start() {
-        ((DepartmentPrivateState)actorState).addCourse(name);
+        ((DepartmentPrivateState) this.actorState).addCourse(name);
         CoursePrivateState course = new CoursePrivateState();
-        course.setSpots(capacity);
+        course.setAvailableSpots(capacity);
         course.setRegistered(0);
-        for(String p : preqisites){
-            course.addprequisites(p);
+        for (String p :prequisites){
+            course.add_prequisite(p);
         }
-        pool.submit(null,name,course);
+        pool.submit(null, name, course);
+
     }
 }

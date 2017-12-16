@@ -67,6 +67,7 @@ class Transmission extends Action{
         sendMessage(confAction, bankB, new PrivateState() {});
         then(actions,()->{
             Boolean result = actions.get(0).getResult().get();
+
             if(result==true){
                 complete("transmission good");
                 System.out.println("transmission good");
@@ -77,6 +78,7 @@ class Transmission extends Action{
             }
         });
 
+
     }
 
 }
@@ -84,9 +86,9 @@ class Transmission extends Action{
 public class banksTest {
 
     public static void main(String[] args) throws InterruptedException {
-        for (int n = 0; n < 100001; n++) {
+        for (int n = 0; n < 1000; n++) {
             System.out.println("=================================="+n);
-            ActorThreadPool pool = new ActorThreadPool(8);
+            ActorThreadPool pool = new ActorThreadPool(3);
             Action<String> trans = new Transmission(100, "A", "B", "bank1", "bank2", new PrivateState() {
             });
             Action<String> trans1 = new Transmission(100, "B", "A", "bank2", "bank1", new PrivateState() {
@@ -122,12 +124,10 @@ public class banksTest {
 
 
             Object lock = new Object();
-
+            pool.start();
             pool.submit(trans2, "bank1", new PrivateState() {
             });
-            synchronized (lock) {
-                     lock.wait(100);
-            }
+
             pool.submit(trans3, "bank3", new PrivateState() {
             });
 
@@ -136,7 +136,7 @@ public class banksTest {
             });
             pool.submit(trans5, "bank1", new PrivateState() {
             });
-            pool.start();
+
             pool.submit(trans1, "bank2", new PrivateState() {
             });
 

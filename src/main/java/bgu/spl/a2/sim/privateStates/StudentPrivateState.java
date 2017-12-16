@@ -18,7 +18,7 @@ public class StudentPrivateState extends PrivateState{
 	 * this may cause automatic tests to fail..
 	 */
 	public StudentPrivateState() {
-		grades = new HashMap<String , Integer>();
+		grades = new HashMap<String, Integer>();
 	}
 
 	public HashMap<String, Integer> getGrades() {
@@ -36,8 +36,7 @@ public class StudentPrivateState extends PrivateState{
 	public void setSignature(long signature) {
 		this.signature = signature;
 	}
-
-	public void addGrade(String course , Integer grade){
-		grades.put(course,grade);
+	public void addGrade (String course, Integer grade){
+		grades.put(course, grade);
 	}
 }

@@ -21,31 +21,10 @@ public class CoursePrivateState extends PrivateState{
 	 * this may cause automatic tests to fail..
 	 */
 	public CoursePrivateState() {
+		availableSpots = 0;
+		registered = 0;
 		regStudents = new LinkedList<String>();
 		prequisites = new LinkedList<String>();
-	}
-
-	public void setSpots(Integer availableSpots){
-		this.availableSpots = availableSpots;
-	}
-
-	public void setRegistered(Integer registered){
-		this.registered = registered;
-	}
-	public void setRegStudents(List<String> regStudents) {
-		this.regStudents = regStudents;
-	}
-
-	public void setPrequisites(List<String> prequisites) {
-		this.prequisites = prequisites;
-	}
-
-	public void registerStudent(String student){
-		regStudents.add(student);
-	}
-
-	public void addprequisites(String prequisite){
-		prequisites.add(prequisite);
 	}
 
 	public Integer getAvailableSpots() {
@@ -64,6 +43,37 @@ public class CoursePrivateState extends PrivateState{
 		return prequisites;
 	}
 
-
-
+	public void setAvailableSpots (Integer availableSpots){
+		this.availableSpots = availableSpots;
+	}
+	public void setRegistered (Integer registered){
+		this.registered = registered;
+	}
+	public void setPrequisites (List prequisites){
+		this.prequisites = prequisites;
+	}
+	public void setRegStudents (List regStudents){
+		this.regStudents = regStudents;
+	}
+	public void register_student (String name) {
+		if (availableSpots > 0){
+			regStudents.add(name);
+			availableSpots--;
+			registered++;
+		} else {
+			System.out.println("Course is Full!!");
+		}
+	}
+	public void remove_student (String name){
+		if (regStudents.contains(name)) {
+			regStudents.remove(name);
+			registered--;
+			availableSpots++;
+			System.out.println("Sent him home");
+		} else
+			System.out.println("Me dont know him");
+	}
+	public void add_prequisite (String prequisite){
+		prequisites.add(prequisite);
+	}
 }

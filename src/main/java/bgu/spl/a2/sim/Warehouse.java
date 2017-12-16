@@ -1,5 +1,6 @@
 package bgu.spl.a2.sim;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -8,21 +9,20 @@ import java.util.List;
  * 
  */
 public class Warehouse {
-    private Computer pc_arr[];
-    int index;
-    public Warehouse(int n){
-        pc_arr = new Computer[n];
-        index =0;
-    }
+	private Computer PC_arr[];
+	int index;
 
-    public void addCmputer(Computer c){
-        if(index == pc_arr.length)
-            System.out.println("no room in warehouse for " + c);
-       pc_arr[index]=c;
-       index ++;
-    }
 
-    public Computer getComputer(int i){
-        return pc_arr[i];
+	public Warehouse (int PCnumber){
+        PC_arr = new Computer[PCnumber];
+        index = 0;
+    }
+    public void  addPC (Computer pc) {
+	    if (index == PC_arr.length)
+	        System.out.println("No room in WareHouse for: " + pc);
+	    else {
+            PC_arr[index] = pc;
+            index++;
+        }
     }
 }

@@ -18,31 +18,34 @@ public class DepartmentPrivateState extends PrivateState{
 	 * this may cause automatic tests to fail..
 	 */
 	public DepartmentPrivateState() {
-		studentList = new LinkedList<String>();
 		courseList = new LinkedList<String>();
+		studentList = new LinkedList<String>();
 	}
 
 	public List<String> getCourseList() {
+
 		return courseList;
 	}
 
 	public List<String> getStudentList() {
+
 		return studentList;
 	}
 
 	public void setCourseList(List<String> courseList) {
+
 		this.courseList = courseList;
 	}
 
 	public void setStudentList(List<String> studentList) {
+
 		this.studentList = studentList;
 	}
 
-	public void addStudent(String student){
-		studentList.add(student);
-	}
-
-	public void addCourse(String course){
+	public void addCourse (String course){
 		courseList.add(course);
+	}
+	public void addStudent (String student){
+		studentList.add(student);
 	}
 }

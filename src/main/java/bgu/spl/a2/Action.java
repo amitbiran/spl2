@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public abstract class Action<R> {
-    protected Promise<R> result;
+    protected Promise<R> result = new Promise<R>();
     protected String actorId;
     protected String actionName;
     protected PrivateState actorState;

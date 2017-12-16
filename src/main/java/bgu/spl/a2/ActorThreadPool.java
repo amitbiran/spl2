@@ -44,7 +44,7 @@ public class ActorThreadPool {
 		for(int i=0;i<nthreads;i++){
 			this.nthreads.add(new Thread(()->{
 				///////////////
-				System.out.println("thread: "+this.toString()+ " started");
+				//System.out.println("thread: "+this.toString()+ " started");
 				Action<?> action=null;
 				while (running.get()) {
 					boolean nothing_to_do =true;
@@ -88,15 +88,15 @@ public class ActorThreadPool {
 								int g=0;//dbugger
 							}
 						} catch (Exception e) {
-							System.out.println(e);//debugger
+							e.printStackTrace();//debugger
 						}
 
 					}//for
 					//avoid busy wait
 					if (nothing_to_do)try{ version.await(version.getVersion());}
 					catch(Exception e){
-						System.out.println("cant await: "+e);
-						System.out.println("cant await: "+e);
+					//	System.out.println("cant await: "+e);
+						//System.out.println("cant await: "+e);
 					}
 
 				}//infinite while
@@ -141,7 +141,10 @@ public class ActorThreadPool {
 				((LinkedBlockingQueue)actors.get(actorId)).put(action);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			} catch (NullPointerException e2) {
+
 			}
+
 			//	privateStates.remove(actorId);
 			//	privateStates.put(actorId,actorState);
 		}
@@ -149,13 +152,14 @@ public class ActorThreadPool {
 			LinkedBlockingQueue<Action<?>> actor = 	new LinkedBlockingQueue<Action<?>>();
 			try {
 				if(action !=null)
-				actor.put(action);
+					actor.put(action);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			actors.put(actorId,actor);
+
 			privateStates.put(actorId,actorState);
 			locks.put(actorId,new AtomicBoolean(false));//add an unlocked lock to this actor
+			actors.put(actorId,actor);
 		}
 		version.inc();
 	}
@@ -174,7 +178,7 @@ public class ActorThreadPool {
 		System.out.println("shutting down");//test only todo
 		running.set(false);
 		for(Thread t:nthreads){
-			t.interrupt();
+			//t.interrupt();
 		}
 		for(Thread t:nthreads){
 			t.join();

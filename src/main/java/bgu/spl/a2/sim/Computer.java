@@ -8,8 +8,7 @@ public class Computer {
 	String computerType;
 	long failSig;
 	long successSig;
-	private  SuspendingMutex txt= new SuspendingMutex(this);
-
+	private SuspendingMutex txt = new SuspendingMutex(this);
 
 	public Computer(String computerType) {
 		this.computerType = computerType;
@@ -25,8 +24,9 @@ public class Computer {
 	 */
 	public long checkAndSign(List<String> courses, Map<String, Integer> coursesGrades){
 		long ans = successSig;
-		for(String course:courses){
-			if(coursesGrades.get(course)==null||coursesGrades.get(course)<56)ans = failSig;
+		for (String course: courses){
+			if (coursesGrades.get(course) >= 56 || coursesGrades.get(course) == null)
+				ans = failSig;
 		}
 		return ans;
 	}
